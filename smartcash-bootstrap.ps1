@@ -4,16 +4,16 @@ $RandPass = -join ([char[]](65..90+97..122)*100 | Get-Random -Count 32)
 
 echo "Checking if SmartCash folder exists..."
 
-$Path = Test-Path $Env:AppData/SmartCash -PathType Container
+$Path = Test-Path $Env:AppData/Smartcash -PathType Container
 
 If ($Path) {
 	echo "SmartCash folder located"
 } else {
 	echo "No SmartCash folder in AppData creating one"
-	md $Env:AppData/SmartCash
+	md $Env:AppData/Smartcash
 }
 
-cd $Env:AppData/SmartCash
+cd $Env:AppData/Smartcash
 
 if ($Path) {
 	if (Test-Path ./blocks -PathType Container) {
@@ -24,6 +24,11 @@ if ($Path) {
 	if (Test-Path ./chainstate -PathType Container) {
 		echo "Removing old Chainstate folder..."
 		Remove-Item -path ./chainstate -recurse
+		echo "Done"
+	}
+    if (Test-Path ./database -PathType Container) {
+		echo "Removing old Database folder..."
+		Remove-Item -path ./database -recurse
 		echo "Done"
 	}
 }
@@ -63,9 +68,10 @@ if (-not $RPCPass) {
 	$RPCPass = $RandPass
 }
 
-echo "rpcuser=$RPCUser
+$Settings = "rpcuser=$RPCUser
 rpcpassword=$RPCPass
-txindex=1">>smartcash.conf
+txindex=1"
+$Settings | Out-File -FilePath ./smartcash.conf -NoNewline -Encoding utf8
 echo "Done"
 
 echo "You are now ready to start SmartCash Wallet. Enjoy."
