@@ -14,4 +14,4 @@ This script will automatically locate SmartCash folder (if needed create it) in 
 
 ## How to use `createconf.ps1`
 - Right-Click it and choose `Run with PowerShell`
-- Recomended to just use ENTER when asked for RPC user and pass
+- RPC user and pass will be set random
