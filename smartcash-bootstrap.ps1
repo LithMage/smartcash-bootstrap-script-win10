@@ -47,7 +47,7 @@ if (Test-Path ./txindexstrap.zip -PathType Leaf) {
 }
 	
 if ($BFound -eq 'y') {
-	Invoke-WebRequest https://proteanx.com/txindexstrap.zip -OutFile txindexstrap.zip
+	Invoke-WebRequest https://smartcash.cc/txindexstrap.zip -OutFile txindexstrap.zip
 }
 
 Expand-Archive -Path txindexstrap.zip -DestinationPath ./
