@@ -1,8 +1,6 @@
 # smartcash-win10-scripts
 Various Smartcash PowerShell scripts for Windows 10
 
-This script will automatically locate SmartCash folder (if needed create it) in AppData, delete existing blocks and chainstate folders, download txindex bootstrap and finally create smartcash.conf file with required settings.
-
 ## `deleteSCDB.ps1`
 Deletes smartcash database thus forcing wallet to resync from 0.
 To run:
