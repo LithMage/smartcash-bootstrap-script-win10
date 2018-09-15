@@ -12,9 +12,7 @@ Excludes Database and Node Clients directories from Windows Defender.
 Adds inbound rule "Allow Smartcash 9678" to windows firewall
 
 To run:
-- Right-Click Start button -> select `Windows Powershell (Admin)`
-- use cd command to switch into directory where win10exclusion.ps1 is located. Ex: C:\Users\MyUser\Downloads
-- write `win10exclusion.ps1` to start script.
+- Right-Click it and choose `Run with PowerShell`
 
 # Scripts bellow are DEPRECATED
 
