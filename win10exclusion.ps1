@@ -1,10 +1,13 @@
-﻿$isAdmin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+{   
+#"No Administrative rights, it will display a popup window asking user for Admin rights"
 
-if (!$isAdmin) {
-    echo "Powershell must be started as administrator!"
-    pause
-    exit
+$arguments = "& '" + $myinvocation.mycommand.definition + "'"
+Start-Process "$psHome\powershell.exe" -Verb runAs -ArgumentList $arguments
+
+break
 }
+#"After user clicked Yes on the popup, your file will be reopened with Admin rights"
 
 $DefPath = Get-ItemPropertyValue 'HKCU:\SOFTWARE\Smartcash\Smartcash-Qt' 'strDataDir'
 
