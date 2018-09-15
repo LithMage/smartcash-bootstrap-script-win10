@@ -34,6 +34,8 @@ if ($DefPath) {
     New-NetFirewallRule -DisplayName "Allow Smartcash 9678" -Direction Inbound -Protocol TCP -LocalPort 9678 -Program $smartcash -Action Allow
     #netsh advfirewall firewall add rule name="SmartCash Port 9678" dir=in action=allow protocol=TCP localport=9678
     echo "Windows Firewall: SmartCash Port 9678 opened as Rule: Allow Smartcash 9678"
+    pause
+    exit
 }
 else {
     echo "No database folder detected. Please contact support."
